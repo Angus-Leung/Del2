@@ -2,6 +2,8 @@
 #include "Project.h"
 #include "Team.h"
 #include "Queue.h"
+#include "Admin.h"
+#include "Student.h"
 
 using namespace std;
 
@@ -9,10 +11,16 @@ int main()
 {
   Queue<Project*>  ProjectList;  //Make a ProjectList (as a Queue)
 
+
+  //Make 3 Admins
+  Admin* a1 = new Admin("Dusan Rozman"); 
+  Admin* a2 = new Admin("Angus Leung");
+  Admin* a3 = new Admin("Roman Chametka");
+
   //Make 3 new Projects
-  Project* pro1 = new Project("My Project","This is a project that I made","Dusan Rozman");
-  Project* pro2 = new Project("Angus' Project","This is a project that Angus made","Angus Leung");
-  Project* pro3 = new Project("Roman's Project","This is a project that Roman made","Roman Chametka");
+  Project* pro1 = new Project("My Project","This is a project that I made", a1);
+  Project* pro2 = new Project("Angus' Project","This is a project that Angus made", a2);
+  Project* pro3 = new Project("Roman's Project","This is a project that Roman made", a3);
 
   //add each project to project list
   ProjectList += pro1;
@@ -23,15 +31,15 @@ int main()
   cout << "\nChecking what's in ProjectList after adding to it\n"; 
   cout << "  Name: " << ProjectList[0]->getName() << "\n";
   cout << "  Desc: " << ProjectList[0]->getDesc() << "\n";
-  cout << "  Owner: " << ProjectList[0]->getOwner() << "\n";
+  cout << "  Owner: " << ProjectList[0]->getOwner()->getName() << "\n";
 
   cout << "\n  Name: " << ProjectList[1]->getName() << "\n";
   cout << "  Desc: " << ProjectList[1]->getDesc() << "\n";
-  cout << "  Owner: " << ProjectList[1]->getOwner() << "\n";
+  cout << "  Owner: " << ProjectList[1]->getOwner()->getName() << "\n";
 
   cout << "\n  Name: " << ProjectList[2]->getName() << "\n";
   cout << "  Desc: " << ProjectList[2]->getDesc() << "\n";
-  cout << "  Owner: " << ProjectList[2]->getOwner() << "\n";
+  cout << "  Owner: " << ProjectList[2]->getOwner()->getName() << "\n";
 
   //Remove project 1 from the list (for testing)
   ProjectList -= pro1;
@@ -47,7 +55,7 @@ int main()
   Project* tempProject = ProjectList.getWithName("Roman's Project");
   cout << "  Name: " << tempProject->getName() << "\n";
   cout << "  Desc: " << tempProject->getDesc() << "\n";
-  cout << "  Owner: " << tempProject->getOwner() << "\n";
+  cout << "  Owner: " << tempProject->getOwner()->getName() << "\n";
 
 
   //Creating  a few teams to test

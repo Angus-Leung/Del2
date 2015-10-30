@@ -3,10 +3,10 @@
 Project::Project(){
   name = "Default Project Name";
   desc = "This is the default description of the project.";
-  owner = "Owner's name";
+  owner = new Admin("Default Owner");
 }
 
-Project::Project(string n, string d, string o){
+Project::Project(string n, string d, Admin* o){
   name = n;
   desc = d;
   owner = o;
@@ -30,7 +30,7 @@ void Project::printRegistered(){
 //Getters and Setters
 string Project::getName() {  return name;  }
 string Project::getDesc() {  return desc;  }
-string Project::getOwner(){  return owner; }
+Admin* Project::getOwner(){  return owner; }
 void Project::setName(string newname){  name = newname;  }
 void Project::setDesc(string newdesc){  desc = newdesc;  }
 
